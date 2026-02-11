@@ -95,7 +95,7 @@ const AboutUs = () => {
                 className="container mx-auto px-10 md:px-18 xl:px-19 2xl:px-19 flex flex-col justify-center items-center text-center gap-12"
             >
                 <span className="text-black text-[25px] font-normal">• Our Story</span>
-                <h2 className="text-2xl md:text-[50px] font-bold text-black leading-tight">
+                <h2 className="text-2xl md:text-[40px] font-bold text-black leading-tight">
                     Shaping the future through <span className="text-primary font-bold">innovation and expertise</span>
                 </h2>
 

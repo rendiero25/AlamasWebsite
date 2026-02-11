@@ -146,7 +146,7 @@ const ProductList = () => {
                     transition={{ duration: 0.8 }}
                     className="mb-12"
                 >
-                    <h2 className="text-3xl md:text-[50px] font-bold text-primary">
+                    <h2 className="text-3xl md:text-[40px] font-bold text-primary">
                         Chemical Solutions <span className="text-black font-bold">For Your Business</span>
                     </h2>
                     <p className="text-black mt-4 max-w-7xl font-normal italic text-[25px]">

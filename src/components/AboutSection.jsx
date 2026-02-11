@@ -35,7 +35,7 @@ const AboutSection = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="w-full"
                     >
-                        <h2 className="text-2xl md:text-[50px] font-normal text-black leading-snug">
+                        <h2 className="text-2xl md:text-[40px] font-normal text-black leading-relaxed">
                             Founded in 2023 
                             <span className="inline-block align-middle mx-2">
                                 <img src={TimeCircleIcon} alt="timecircleicon" className="w-7 md:w-12" />

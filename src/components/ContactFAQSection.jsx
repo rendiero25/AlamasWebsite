@@ -76,7 +76,7 @@ const ContactFAQSection = () => {
                     <div 
                         className="relative z-10 w-full max-w-xl bg-black/50 backdrop-blur-xl p-10 md:p-12 rounded-2xl"
                     >
-                        <h2 className="text-white text-[35px] font-bold mb-10 leading-tight">
+                        <h2 className="text-white text-[35px] font-normal mb-10 leading-relaxed">
                             Let's Start a Conversation About Your Needs
                         </h2>
                         
@@ -150,7 +150,7 @@ const ContactFAQSection = () => {
                         <div className='hidden 2xl:flex bg-white w-full h-25'></div>
                         
                         <div className="w-full h-full bg-[#F0F0F0] p-10 2xl:p-24">
-                            <h2 className="text-3xl md:text-[50px] font-normal text-black mb-12">
+                            <h2 className="text-3xl md:text-[40px] font-normal text-black mb-12">
                                 Frequently Asked <span className="text-primary font-bold">Questions</span>
                             </h2>
                             

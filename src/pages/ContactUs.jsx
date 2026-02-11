@@ -15,7 +15,7 @@ const ContactUs = () => {
                         transition={{ duration: 0.8 }}
                         className="lg:w-1/2"
                     >
-                        <h1 className="text-[60px] md:text-[100px] font-medium text-black leading-tight mb-8">
+                        <h1 className="text-[60px] md:text-[80px] font-medium text-black leading-tight mb-8">
                             Let's get <br /> in touch
                         </h1>
                         <p className="text-[30px] md:text-[35px] font-medium text-black leading-tight">

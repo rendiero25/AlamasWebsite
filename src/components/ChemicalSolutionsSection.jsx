@@ -36,9 +36,9 @@ const ChemicalSolutionsSection = () => {
                         • Products
                     </span>
                     
-                    <h2 className="text-3xl md:text-[50px] font-normal text-black w-full leading-tight">
+                    <h2 className="text-3xl md:text-[40px] font-normal text-black w-full leading-tight">
                         Chemical Solutions for Your Business.<br />
-                        <span className="text-primary font-bold text-3xl xl:text-[50px]">
+                        <span className="text-primary font-bold text-3xl xl:text-[40px]">
                             From general chemicals to specialty chemicals, we have it all
                         </span>
                     </h2>

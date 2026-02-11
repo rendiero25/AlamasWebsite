@@ -35,7 +35,7 @@ const IndustryList = () => {
         <section className="w-full flex flex-col gap-12 md:gap-24 font-primary mb-[75px]">
             <div className="container mx-auto px-10 md:px-18 xl:px-19 2xl:px-19">
                 <div className="mb-0">
-                    <h2 className="text-3xl md:text-[50px] font-bold text-primary">
+                    <h2 className="text-3xl md:text-[40px] font-bold text-primary">
                         Chemical Solutions <span className="text-black font-bold">For Every Industry</span>
                     </h2>
                     <p className="text-black mt-4 max-w-7xl font-normal italic text-[20px] md:text-[25px] leading-relaxed">

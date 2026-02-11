@@ -59,9 +59,9 @@ const IndustrySections = () => {
                         • Industries
                     </span>
 
-                    <h2 className="text-3xl md:text-[50px] font-normal text-black w-full leading-tight max-w-328">
+                    <h2 className="text-3xl md:text-[40px] font-normal text-black w-full leading-tight max-w-328">
                         From sourcing to supply chain innovation,<br />
-                        <span className="text-primary font-bold text-3xl xl:text-[50px]">Our solutions are built to deliver efficiency, safety, and long-term resilience for industries.</span>
+                        <span className="text-primary font-bold text-3xl xl:text-[40px]">Our solutions are built to deliver efficiency, safety, and long-term resilience for industries.</span>
                     </h2>
                 </motion.div>
 
