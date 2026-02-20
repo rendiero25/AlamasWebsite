@@ -1,30 +1,11 @@
-import express from 'express';
-import Category from '../models/Category.mjs';
-import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
+import express from "express";
+import Category from "../models/Category.mjs";
+import upload from "../middleware/uploadMiddleware.mjs";
 
 const router = express.Router();
 
-// Configure Multer for local storage
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadPath = 'uploads/icons/';
-    // Create directory if it doesn't exist
-    if (!fs.existsSync(uploadPath)){
-        fs.mkdirSync(uploadPath, { recursive: true });
-    }
-    cb(null, uploadPath);
-  },
-  filename: function (req, file, cb) {
-    cb(null, 'icon-' + Date.now() + path.extname(file.originalname));
-  }
-});
-
-const upload = multer({ storage: storage });
-
 // GET all categories
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const categories = await Category.find();
     res.json(categories);
@@ -34,22 +15,26 @@ router.get('/', async (req, res) => {
 });
 
 // POST new category
-router.post('/', upload.single('icon'), async (req, res) => {
+router.post("/", upload.single("icon"), async (req, res) => {
   try {
     const { name } = req.body;
-    let iconPath = '';
-    
+    let iconData = "";
+
     if (req.file) {
-      iconPath = `/uploads/icons/${req.file.filename}`;
+      // Convert to base64 data URI (Vercel has no writable filesystem)
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+      iconData = "data:" + req.file.mimetype + ";base64," + b64;
+    } else if (req.body.icon) {
+      iconData = req.body.icon;
     }
 
-    if (!name || !iconPath) {
-        return res.status(400).json({ message: 'Name and Icon are required' });
+    if (!name || !iconData) {
+      return res.status(400).json({ message: "Name and Icon are required" });
     }
 
     const newCategory = new Category({
       name,
-      icon: iconPath
+      icon: iconData,
     });
 
     const savedCategory = await newCategory.save();
@@ -59,18 +44,37 @@ router.post('/', upload.single('icon'), async (req, res) => {
   }
 });
 
-// DELETE category
-router.delete('/:id', async (req, res) => {
+// PUT update category icon
+router.put("/:id/icon", upload.single("icon"), async (req, res) => {
   try {
     const category = await Category.findById(req.params.id);
-    if (!category) return res.status(404).json({ message: 'Category not found' });
-    
-    // Optional: Delete the icon file
-    // const filePath = path.join(__dirname, '..', category.icon);
-    // if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    if (!category)
+      return res.status(404).json({ message: "Category not found" });
+
+    if (!req.file) {
+      return res.status(400).json({ message: "Icon file is required" });
+    }
+
+    // Convert to base64 data URI (Vercel has no writable filesystem)
+    const b64 = Buffer.from(req.file.buffer).toString("base64");
+    category.icon = "data:" + req.file.mimetype + ";base64," + b64;
+
+    const updated = await category.save();
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// DELETE category
+router.delete("/:id", async (req, res) => {
+  try {
+    const category = await Category.findById(req.params.id);
+    if (!category)
+      return res.status(404).json({ message: "Category not found" });
 
     await category.deleteOne();
-    res.json({ message: 'Category deleted' });
+    res.json({ message: "Category deleted" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
